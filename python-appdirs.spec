@@ -38,7 +38,7 @@ and also:
 python setup.py build
 
 %install
-python setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE=true  python setup.py install --root=%{buildroot}
 
 %check
 python setup.py test
