@@ -1,15 +1,16 @@
 %define	oname	appdirs
 
 Name:		python-%{oname}
-Version:	1.4.0
+Version:	1.4.3
 Release:	1
 Summary:	A small Python module for determining appropriate platform-specific dirs
-Source0:	http://pypi.python.org/packages/source/a/%{oname}/%{oname}-%{version}.tar.gz
+Source0:	https://github.com/ActiveState/appdirs/archive/%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
 Url:		http://github.com/ActiveState/appdirs
 BuildArch:	noarch
 BuildRequires:	python3egg(setuptools)
+BuildRequires:	pythonegg(setuptools)
 
 %description
 What directory should your app use for storing user data?
@@ -31,14 +32,25 @@ and also:
 - is slightly opinionated on the directory names used. Look for "OPINION" in
   documentation and code for when an opinion is being applied.
 
+%package -n python2-%{oname}
+Summary:        small Python module for determining appropriate platform-specific dirs
+Group:          Development/Python
+
 %prep
 %setup -q -n %{oname}-%{version}
+cp -a . %{py3dir}
 
 %build
-python setup.py build
+%{__python2} setup.py build
+pushd %{py3dir}
+%{__python3} setup.py build
+popd
 
 %install
-PYTHONDONTWRITEBYTECODE=true  python setup.py install --root=%{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
+pushd %{py3dir}
+%{__python3} setup.py install --skip-build --root %{buildroot}
+popd
 
 %check
 python setup.py test
@@ -49,3 +61,7 @@ python setup.py test
 %doc README.rst
 %{py_puresitedir}/appdirs.py*
 %{py_puresitedir}/appdirs*.egg-info
+
+%files -n python2-%{oname}
+%{py2_puresitedir}/appdirs.py*
+%{py2_puresitedir}/appdirs*.egg-info
