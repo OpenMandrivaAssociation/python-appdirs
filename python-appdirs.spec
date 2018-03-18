@@ -36,21 +36,24 @@ and also:
 Summary:        small Python module for determining appropriate platform-specific dirs
 Group:          Development/Python
 
+%description -n python2-%{oname}
+Python2 module for determining appropriate platform-specific dirs.
+
 %prep
 %setup -q -n %{oname}-%{version}
 cp -a . %{py3dir}
 
 %build
 %{__python2} setup.py build
-pushd %{py3dir}
+cd %{py3dir}
 %{__python3} setup.py build
-popd
+cd -
 
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
-pushd %{py3dir}
+cd %{py3dir}
 %{__python3} setup.py install --skip-build --root %{buildroot}
-popd
+cd -
 
 %check
 python setup.py test
