@@ -64,7 +64,7 @@ python setup.py test
 %doc README.rst
 %{py_puresitedir}/appdirs.py*
 %{py_puresitedir}/appdirs*.egg-info
-%{py_puresitedir}/appdirs.cpython*
+%{py_puresitedir}/__pycache__/appdirs.cpython*
 
 %files -n python2-%{oname}
 %{py2_puresitedir}/appdirs.py*
