@@ -2,15 +2,14 @@
 
 Name:		python-%{oname}
 Version:	1.4.4
-Release:	1
+Release:	2
 Summary:	A small Python module for determining appropriate platform-specific dirs
 Source0:	https://github.com/ActiveState/appdirs/archive/%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
 Url:		http://github.com/ActiveState/appdirs
 BuildArch:	noarch
-BuildRequires:	python3egg(setuptools)
-BuildRequires:	pythonegg(setuptools)
+BuildRequires:	python3dist(setuptools)
 
 %description
 What directory should your app use for storing user data?
