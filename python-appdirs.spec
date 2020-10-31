@@ -10,6 +10,7 @@ Group:		Development/Python
 Url:		http://github.com/ActiveState/appdirs
 BuildArch:	noarch
 BuildRequires:	python3dist(setuptools)
+BuildRequires:	python2dist(setuptools)
 
 %description
 What directory should your app use for storing user data?
