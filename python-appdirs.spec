@@ -2,7 +2,7 @@
 
 Name:		python-%{oname}
 Version:	1.4.4
-Release:	2
+Release:	3
 Summary:	A small Python module for determining appropriate platform-specific dirs
 Source0:	https://github.com/ActiveState/appdirs/archive/%{version}.tar.gz
 License:	MIT
