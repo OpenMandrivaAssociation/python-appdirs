@@ -7,7 +7,7 @@ Summary:	A small Python module for determining appropriate platform-specific dir
 Source0:	https://github.com/ActiveState/appdirs/archive/%{version}.tar.gz
 License:	MIT
 Group:		Development/Python
-Url:		http://github.com/ActiveState/appdirs
+Url:		https://github.com/ActiveState/appdirs
 BuildArch:	noarch
 BuildRequires:	python3dist(setuptools)
 
