@@ -9,7 +9,8 @@ License:	MIT
 Group:		Development/Python
 Url:		https://github.com/ActiveState/appdirs
 BuildArch:	noarch
-BuildRequires:	python3dist(setuptools)
+BuildSystem:	python
+BuildRequires:	python%{pyver}dist(setuptools)
 
 %description
 What directory should your app use for storing user data?
@@ -30,18 +31,6 @@ and also:
   private copy
 - is slightly opinionated on the directory names used. Look for "OPINION" in
   documentation and code for when an opinion is being applied.
-
-%prep
-%autosetup -n %{oname}-%{version}
-
-%build
-%py3_build
-
-%install
-%py3_install
-
-%check
-python setup.py test
 
 %files
 %doc CHANGES.rst
